@@ -10,7 +10,12 @@ import './contact.css';
 //             <div>
 //                 <h4 className="name">{props.name}</h4>
                 
-//                 <div className="status">
+//                 <div className={event => {
+                        //     const newClick = !this.props.online;
+                        //     this.setState({
+                        //         online:  newClick
+                        //      });
+                        // }}"status">
                     
 //                     <div className={props.online ? "status-online" : "status-offline"}></div>
 
@@ -31,6 +36,13 @@ class Contact extends React.Component{
             online: false
         }
     }
+
+    newClick = event =>{
+        const newState = !this.state.online;
+        this.setState({
+            online: newState
+        })
+    }
     
     render(){
         return(
@@ -41,19 +53,14 @@ class Contact extends React.Component{
                 <div>
                     <h4 className="name">{this.props.name}</h4>
                     
-                    <div className="status">
+                    <div className="status" onClick = {this.newClick}>
                         
                         <div 
                         className = {this.state.online ? "status-online" : "status-offline"}
-                        onClick = {event => {
-                            const newClick = !this.props.online;
-                            this.setState({
-                                online:  newClick
-                             });
-                        }}
+                        
                         ></div>
 
-                        <p className="status-text">{this.props.online ? "Online" : "Offline"}</p>
+                        <p className="status-text">{this.state.online ? "Online" : "Offline"}</p>
                     
                     </div>
                 </div>
