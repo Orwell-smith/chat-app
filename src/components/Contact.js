@@ -33,7 +33,7 @@ class Contact extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            online: false
+            online: props.online
         }
     }
 
